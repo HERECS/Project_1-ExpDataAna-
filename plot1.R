@@ -17,10 +17,12 @@ Data <- read.table("./Data/household_power_consumption.txt", sep=";", header=FAL
 ##rename them
 names(Data) <- TheNames
 
+##create png file
+png("plot1.png", width=480, height=480)
+
 ##start the first plot
 par(mar=c(4,4,2,2))
 hist(Data$Global_active_power, col="red", main="Global Active Power", xlab="Global Active Power (kilowatts)")
 
-##save to png
-dev.copy(png, "plot1.png", width=480, height=480)
+##close dev
 dev.off()
