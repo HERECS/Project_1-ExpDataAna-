@@ -20,9 +20,11 @@ names(Data) <- TheNames
 ##combine date and time in format of POSIXct and add as a column into DataTime
 Data$DateTime <- dmy_hms(paste(Data$Date, Data$Time))
 
+##create png file
+png("plot2.png", width=480, height=480)
+
 ##start the second plot
 with(Data, plot(Global_active_power~DateTime, type="l", ylab="Global Active Power (kilowatts)", xlab=""))
 
-##save to png
-dev.copy(png, "plot2.png", width=480, height=480)
+##close dev
 dev.off()
