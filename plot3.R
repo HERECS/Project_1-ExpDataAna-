@@ -21,12 +21,14 @@ names(Data) <- TheNames
 ##combine date and time in format of POSIXct and add as a column into DataTime
 Data$DateTime <- dmy_hms(paste(Data$Date, Data$Time))
 
+##Create png
+png("plot3.png", width=480, height=480)
+
 ##start the third plot
 with(Data, plot(Sub_metering_1~DateTime, type="l", col="black", xlab="", ylab="Energy sub metering"))
 with(Data, lines(Sub_metering_2~DateTime, col="red"))
 with(Data, lines(Sub_metering_3~DateTime, col="blue"))
 legend("topright", c("Sub_metering_1","Sub_metering_2","Sub_metering_3"), col=c("black","red","blue"), lwd=c(1,1,1))
 
-#save to png
-dev.copy(png, "plot3.png", width=480, height=480)
+#close dev
 dev.off()
