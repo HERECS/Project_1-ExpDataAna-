@@ -21,6 +21,9 @@ names(Data) <- TheNames
 ##combine date and time in format of POSIXct and add as a column into DataTime
 Data$DateTime <- dmy_hms(paste(Data$Date, Data$Time))
 
+#create png
+png("plot4.png", width=480, height=480)
+
 ##start the fourth plot
 par(mfrow=c(2,2), mar=c(4,4,2,1))
 with(Data, plot(Global_active_power~DateTime, type="l", xlab="", ylab="Global Active Power"))
@@ -31,7 +34,6 @@ with(Data, lines(Sub_metering_3~DateTime, col="blue"))
 legend("topright", c("Sub_metering_1","Sub_metering_2","Sub_metering_3"), col=c("black","red","blue"), lwd=c(1,1,1), bty="n")
 with(Data, plot(Global_reactive_power~DateTime, type="l", xlab="datetime"))
 
-#save to png
-dev.copy(png, "plot4.png", width=480, height=480)
+#close dev
 dev.off()
 
